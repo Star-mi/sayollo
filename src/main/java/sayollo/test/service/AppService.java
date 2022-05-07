@@ -1,10 +1,8 @@
 package sayollo.test.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.MethodParameter;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.client.RestTemplate;
 import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
@@ -48,42 +46,20 @@ public class AppService implements IAppService {
     @Override
     public String getAd(RequestDto requestDto) {
         RestTemplate restTemplate = new RestTemplate();
-        String responseBody = "";
+        String response = "";
         try {
             HttpHeaders headers = new HttpHeaders();
             headers.setAccept(Arrays.asList(MediaType.APPLICATION_XML));
             RequestEntity<String> requestEntity = new RequestEntity<>(headers, HttpMethod.GET, new URI(URL));
             ResponseEntity<String> responseEntity = restTemplate.exchange(requestEntity, String.class);
-            responseBody = responseEntity.getBody();
+            response = responseEntity.getBody();
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }
         saveUserAdInformation(requestDto.getUserName());
         saveSDKVersionAdInformation(requestDto.getSdkVersion());
-
-        return converStringtoXML(responseBody, 2, true);
+        return response;
     }
-
-    private String converStringtoXML(String responseBody, int indent, boolean ignoreDeclaration) {
-        try {
-            InputSource src = new InputSource(new StringReader(responseBody));
-            Document document = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(src);
-
-            TransformerFactory transformerFactory = TransformerFactory.newInstance();
-            transformerFactory.setAttribute("indent-number", indent);
-            Transformer transformer = transformerFactory.newTransformer();
-            transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
-            transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, ignoreDeclaration ? "yes" : "no");
-            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-
-            Writer out = new StringWriter();
-            transformer.transform(new DOMSource(document), new StreamResult(out));
-            return out.toString();
-        } catch (Exception e) {
-            throw new RuntimeException("Error occurs when pretty-printing xml:\n" + responseBody, e);
-        }
-    }
-
 
     private void saveSDKVersionAdInformation(String title) {
         SDKVersion sdkVersion = sdkVersionRepository.findById(title).orElse(null);

@@ -16,7 +16,7 @@ public class AppController {
         this.appService = appService;
     }
 
-    @PostMapping("/ad")
+    @PostMapping(value = "/ad", produces = { "application/xml;charset=UTF-8" })
     String getAd(@RequestBody RequestDto requestDto){
        return appService.getAd(requestDto);
     }
