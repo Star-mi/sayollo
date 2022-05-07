@@ -1,0 +1,236 @@
+{
+	"info": {
+		"_postman_id": "7990cee4-e152-4527-8ea9-a63c39881451",
+		"name": "Sayollo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Ad request",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"sdkVersion\": \"Android 30\",\n    \"sessionId\": \"qweert\",\n    \"platform\": \"Android\",\n    \"userName\": \"John\",\n    \"countryCode\": \"004\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/ad",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ad"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Ad request",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"sdkVersion\": \"Android 30\",\n    \"sessionId\": \"qweert\",\n    \"platform\": \"Android\",\n    \"userName\": \"John\",\n    \"countryCode\": \"004\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/ad",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ad"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "xml",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain;charset=UTF-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "528"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 06 May 2022 18:33:56 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "<VAST xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" version=\"2.0\">\n    <Ad>\n        <InLine>\n            <Error/>\n            <Creatives>\n                <Creative>\n                    <Linear>\n                        <Duration>00:00:06</Duration>\n                        <MediaFiles>\n                            <MediaFile>\n                                <![CDATA[https://sayollo.nyc3.digitaloceanspaces.com/Covid4.webm]]>\n                            </MediaFile>\n                        </MediaFiles>\n                        <TrackingEvents/>\n                    </Linear>\n                </Creative>\n            </Creatives>\n        </InLine>\n    </Ad>\n</VAST>"
+				}
+			]
+		},
+		{
+			"name": "Impression request",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"sdkVersion\": \"Android 30\",\n    \"sessionId\": \"qweert\",\n    \"platform\": \"Android\",\n    \"userName\": \"John\",\n    \"countryCode\": \"004\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/impression",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"impression"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Stats",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/stats/user/John",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"stats",
+						"user",
+						"John"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Stats - user",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/stats/user/John",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"stats",
+								"user",
+								"John"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 06 May 2022 19:04:58 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"filterType\": \"user\",\n    \"impressions\": 2,\n    \"adRequests\": 3,\n    \"fillRate\": 0.6666666666666666\n}"
+				},
+				{
+					"name": "Stats - sdkVersion",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/stats/sdkVersion/Android 30",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"stats",
+								"sdkVersion",
+								"Android 30"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 06 May 2022 22:11:09 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"filterType\": \"sdkVersion - Android 30\",\n    \"impressions\": 1,\n    \"adRequests\": 2,\n    \"fillRate\": 0.5\n}"
+				}
+			]
+		}
+	]
+}
