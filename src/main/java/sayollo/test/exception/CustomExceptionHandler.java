@@ -17,7 +17,6 @@ import sayollo.test.exception.models.FilterTypeException;
 import sayollo.test.exception.models.SDKVersionNotFoundException;
 import sayollo.test.exception.models.UserNotFoundException;
 
-import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;

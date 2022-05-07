@@ -1,6 +1,5 @@
 package sayollo.test.service;
 
-import org.springframework.http.ResponseEntity;
 import sayollo.test.dto.RequestDto;
 import sayollo.test.dto.StatsDto;
 
